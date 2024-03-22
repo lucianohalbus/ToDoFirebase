@@ -5,7 +5,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         
-        AuthenticationView()
+        AuthenticationView(showSignInView: .constant(false))
     }
 }
 

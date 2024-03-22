@@ -1,14 +1,19 @@
 //Created by Halbus Development
 
 import SwiftUI
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct AuthenticationView: View {
+    @StateObject private var viewModel = AuthenticationViewModel()
+    @Binding var showSignInView: Bool
+    
     var body: some View {
         VStack {
             
             NavigationLink {
                 
-                SignInEmailView()
+                SignInEmailView(showSignInView: $showSignInView)
                 
             } label: {
                 Text("Sign In With Email")
@@ -18,6 +23,17 @@ struct AuthenticationView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color.blue)
                     .cornerRadius(10)
+            }
+            
+            GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .wide, state: .normal)) {
+                Task {
+                    do {
+                        try await viewModel.signInGoogle()
+                        showSignInView = false
+                    } catch {
+                        print(error)
+                    }
+                }
             }
             
             Spacer()
@@ -30,6 +46,6 @@ struct AuthenticationView: View {
 
 #Preview {
     NavigationStack {
-        AuthenticationView()
+        AuthenticationView(showSignInView: .constant(false))
     }
 }
