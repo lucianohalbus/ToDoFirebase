@@ -21,10 +21,11 @@
 		CBD143B62BACAC32000FAA55 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD143B52BACAC32000FAA55 /* SettingsView.swift */; };
 		CBD143B92BAD00EE000FAA55 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CBD143B82BAD00EE000FAA55 /* GoogleSignIn */; };
 		CBD143BB2BAD00EE000FAA55 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CBD143BA2BAD00EE000FAA55 /* GoogleSignInSwift */; };
-		CBD143BE2BAD020B000FAA55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBD143BD2BAD020B000FAA55 /* GoogleService-Info.plist */; };
 		CBD143C02BAD06E2000FAA55 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD143BF2BAD06E2000FAA55 /* AuthenticationViewModel.swift */; };
 		CBD143C32BAD0BE5000FAA55 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD143C22BAD0BE5000FAA55 /* Utilities.swift */; };
 		CBD143C52BAD1A04000FAA55 /* SignInGoogleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD143C42BAD1A04000FAA55 /* SignInGoogleHelper.swift */; };
+		CBD143C82BADADFC000FAA55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBD143C72BADADFC000FAA55 /* GoogleService-Info.plist */; };
+		CBD143CA2BADF77C000FAA55 /* SignInAppleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD143C92BADF77C000FAA55 /* SignInAppleHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,10 +40,12 @@
 		CBD143B32BACAA10000FAA55 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CBD143B52BACAC32000FAA55 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CBD143BC2BAD017B000FAA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		CBD143BD2BAD020B000FAA55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CBD143BF2BAD06E2000FAA55 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		CBD143C22BAD0BE5000FAA55 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		CBD143C42BAD1A04000FAA55 /* SignInGoogleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInGoogleHelper.swift; sourceTree = "<group>"; };
+		CBD143C62BADACA8000FAA55 /* ToDoFirebase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ToDoFirebase.entitlements; sourceTree = "<group>"; };
+		CBD143C72BADADFC000FAA55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CBD143C92BADF77C000FAA55 /* SignInAppleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAppleHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +84,14 @@
 		CBD1438B2BAC9B9F000FAA55 /* ToDoFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				CBD143C62BADACA8000FAA55 /* ToDoFirebase.entitlements */,
 				CBD143C12BAD0BD5000FAA55 /* Utilitie */,
 				CBD143BC2BAD017B000FAA55 /* Info.plist */,
 				CBD143AA2BAC9EAE000FAA55 /* Authentication */,
 				CBD1438C2BAC9B9F000FAA55 /* ToDoFirebaseApp.swift */,
 				CBD1438E2BAC9B9F000FAA55 /* ContentView.swift */,
 				CBD143902BAC9BA2000FAA55 /* Assets.xcassets */,
-				CBD143BD2BAD020B000FAA55 /* GoogleService-Info.plist */,
+				CBD143C72BADADFC000FAA55 /* GoogleService-Info.plist */,
 				CBD143922BAC9BA2000FAA55 /* Preview Content */,
 			);
 			path = ToDoFirebase;
@@ -118,6 +122,7 @@
 				CBD143B32BACAA10000FAA55 /* RootView.swift */,
 				CBD143B52BACAC32000FAA55 /* SettingsView.swift */,
 				CBD143C42BAD1A04000FAA55 /* SignInGoogleHelper.swift */,
+				CBD143C92BADF77C000FAA55 /* SignInAppleHelper.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -201,7 +206,7 @@
 			files = (
 				CBD143942BAC9BA2000FAA55 /* Preview Assets.xcassets in Resources */,
 				CBD143912BAC9BA2000FAA55 /* Assets.xcassets in Resources */,
-				CBD143BE2BAD020B000FAA55 /* GoogleService-Info.plist in Resources */,
+				CBD143C82BADADFC000FAA55 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +226,7 @@
 				CBD1438D2BAC9B9F000FAA55 /* ToDoFirebaseApp.swift in Sources */,
 				CBD143C32BAD0BE5000FAA55 /* Utilities.swift in Sources */,
 				CBD143B02BACA4D4000FAA55 /* AuthenticationManager.swift in Sources */,
+				CBD143CA2BADF77C000FAA55 /* SignInAppleHelper.swift in Sources */,
 				CBD143AC2BAC9EC2000FAA55 /* AuthenticationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,10 +358,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDoFirebase/ToDoFirebase.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoFirebase/Preview Content\"";
-				DEVELOPMENT_TEAM = V3F22T7VGM;
+				DEVELOPMENT_TEAM = PXFJ8P7722;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDoFirebase/Info.plist;
@@ -369,7 +376,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = halbus.ToDoFirebase;
+				PRODUCT_BUNDLE_IDENTIFIER = klever.ToDoFirebase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -382,10 +389,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ToDoFirebase/ToDoFirebase.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ToDoFirebase/Preview Content\"";
-				DEVELOPMENT_TEAM = V3F22T7VGM;
+				DEVELOPMENT_TEAM = PXFJ8P7722;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ToDoFirebase/Info.plist;
@@ -399,7 +407,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = halbus.ToDoFirebase;
+				PRODUCT_BUNDLE_IDENTIFIER = klever.ToDoFirebase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

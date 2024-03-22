@@ -3,6 +3,7 @@
 import SwiftUI
 import GoogleSignIn
 import GoogleSignInSwift
+import AuthenticationServices
 
 struct AuthenticationView: View {
     @StateObject private var viewModel = AuthenticationViewModel()
@@ -10,11 +11,27 @@ struct AuthenticationView: View {
     
     var body: some View {
         VStack {
+            Button(action: {
+                Task {
+                    do {
+                        try await viewModel.signInAnonymously()
+                        showSignInView = false
+                    } catch {
+                        print(error)
+                    }
+                }
+            }, label: {
+                Text("Sign In Anonymously")
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                    .frame(height: 55)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.orange)
+                    .cornerRadius(10)
+            })
             
             NavigationLink {
-                
                 SignInEmailView(showSignInView: $showSignInView)
-                
             } label: {
                 Text("Sign In With Email")
                     .font(.headline)
@@ -35,6 +52,22 @@ struct AuthenticationView: View {
                     }
                 }
             }
+            
+            Button(action: {
+                Task {
+                    do {
+                        try await viewModel.signInApple()
+                        showSignInView = false
+                    } catch {
+                        print(error)
+                    }
+                }
+            }, label: {
+                SignInWithAppleButtonViewRepresentable(type: .default, style: .black)
+                    .allowsHitTesting(false)
+   
+            })
+            .frame(height: 50)
             
             Spacer()
 
