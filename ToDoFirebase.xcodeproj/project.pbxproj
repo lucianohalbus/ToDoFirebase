@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB1F99D52BB0AC73002EA853 /* ProductsDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F99D42BB0AC73002EA853 /* ProductsDatabase.swift */; };
+		CB1F99D82BB0AE61002EA853 /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F99D72BB0AE61002EA853 /* ProductsView.swift */; };
+		CB1F99DA2BB0B46C002EA853 /* ProductsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F99D92BB0B46C002EA853 /* ProductsManager.swift */; };
+		CB1F99DD2BB0C918002EA853 /* ProductsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1F99DC2BB0C918002EA853 /* ProductsCellView.swift */; };
 		CB26B4552BAE645B008CD3B4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB26B4542BAE645A008CD3B4 /* UserManager.swift */; };
 		CBD1438D2BAC9B9F000FAA55 /* ToDoFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1438C2BAC9B9F000FAA55 /* ToDoFirebaseApp.swift */; };
 		CBD1438F2BAC9B9F000FAA55 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD1438E2BAC9B9F000FAA55 /* ContentView.swift */; };
@@ -35,6 +39,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB1F99D42BB0AC73002EA853 /* ProductsDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsDatabase.swift; sourceTree = "<group>"; };
+		CB1F99D72BB0AE61002EA853 /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
+		CB1F99D92BB0B46C002EA853 /* ProductsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsManager.swift; sourceTree = "<group>"; };
+		CB1F99DC2BB0C918002EA853 /* ProductsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCellView.swift; sourceTree = "<group>"; };
 		CB26B4542BAE645A008CD3B4 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		CBD143892BAC9B9F000FAA55 /* ToDoFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD1438C2BAC9B9F000FAA55 /* ToDoFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoFirebaseApp.swift; sourceTree = "<group>"; };
@@ -76,10 +84,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB1F99D62BB0AE44002EA853 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CB1F99D72BB0AE61002EA853 /* ProductsView.swift */,
+				CB1F99DB2BB0C8FE002EA853 /* Subviews */,
+			);
+			path = Products;
+			sourceTree = "<group>";
+		};
+		CB1F99DB2BB0C8FE002EA853 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				CB1F99DC2BB0C918002EA853 /* ProductsCellView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		CB26B4532BAE60AD008CD3B4 /* Firestore */ = {
 			isa = PBXGroup;
 			children = (
 				CB26B4542BAE645A008CD3B4 /* UserManager.swift */,
+				CB1F99D92BB0B46C002EA853 /* ProductsManager.swift */,
 			);
 			path = Firestore;
 			sourceTree = "<group>";
@@ -105,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				CBD143C62BADACA8000FAA55 /* ToDoFirebase.entitlements */,
-				CBD143C12BAD0BD5000FAA55 /* Utilitie */,
+				CBD143C12BAD0BD5000FAA55 /* Utilities */,
 				CBD143AA2BAC9EAE000FAA55 /* Authentication */,
 				CBD143CF2BAE53A3000FAA55 /* Core */,
 				CBD143D32BAE5502000FAA55 /* Authentication */,
@@ -145,17 +171,19 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		CBD143C12BAD0BD5000FAA55 /* Utilitie */ = {
+		CBD143C12BAD0BD5000FAA55 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				CBD143C22BAD0BE5000FAA55 /* Utilities.swift */,
+				CB1F99D42BB0AC73002EA853 /* ProductsDatabase.swift */,
 			);
-			path = Utilitie;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		CBD143CF2BAE53A3000FAA55 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				CB1F99D62BB0AE44002EA853 /* Products */,
 				CBD143B32BACAA10000FAA55 /* RootView.swift */,
 				CBD143D72BAE5667000FAA55 /* Profile */,
 				CBD143D02BAE5495000FAA55 /* Settings */,
@@ -291,12 +319,16 @@
 				CBD1438F2BAC9B9F000FAA55 /* ContentView.swift in Sources */,
 				CBD143AE2BACA002000FAA55 /* SignInEmailViewModel.swift in Sources */,
 				CBD143B42BACAA10000FAA55 /* RootView.swift in Sources */,
+				CB1F99DA2BB0B46C002EA853 /* ProductsManager.swift in Sources */,
 				CBD143C02BAD06E2000FAA55 /* AuthenticationViewModel.swift in Sources */,
 				CBD1438D2BAC9B9F000FAA55 /* ToDoFirebaseApp.swift in Sources */,
 				CBD143C32BAD0BE5000FAA55 /* Utilities.swift in Sources */,
+				CB1F99D52BB0AC73002EA853 /* ProductsDatabase.swift in Sources */,
 				CBD143B02BACA4D4000FAA55 /* AuthenticationManager.swift in Sources */,
+				CB1F99D82BB0AE61002EA853 /* ProductsView.swift in Sources */,
 				CBD143CA2BADF77C000FAA55 /* SignInAppleHelper.swift in Sources */,
 				CBD143AC2BAC9EC2000FAA55 /* AuthenticationView.swift in Sources */,
+				CB1F99DD2BB0C918002EA853 /* ProductsCellView.swift in Sources */,
 				CBD143D92BAE567B000FAA55 /* ProfileView.swift in Sources */,
 				CBD143D22BAE54AA000FAA55 /* SettingsViewModel.swift in Sources */,
 			);

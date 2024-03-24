@@ -7,11 +7,12 @@ struct RootView: View {
     
     var body: some View {
         ZStack {
-            if !showSignInView {
-                NavigationStack {
-                    ProfileView(showSignInView: $showSignInView)
-                }
-            }
+            ProductsView()
+//            if !showSignInView {
+//                NavigationStack {
+//                    ProfileView(showSignInView: $showSignInView)
+//                }
+//            }
         }
         .onAppear {
             let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
