@@ -19,11 +19,51 @@ final class ProfileViewModel: ObservableObject {
             self.user = try await UserManager.share.getUser(userId: user.userId)
         }
     }
+    
+    func addUserPreferences(text: String) {
+        guard let user else { return }
+        
+        Task {
+            try await UserManager.share.addUserPreference(userId: user.userId, preference: text)
+            self.user = try await UserManager.share.getUser(userId: user.userId)
+        }
+    }
+    
+    func removeUserPreferences(text: String) {
+        guard let user else { return }
+        
+        Task {
+            try await UserManager.share.removeUserPreferences(userId: user.userId, preference: text)
+            self.user = try await UserManager.share.getUser(userId: user.userId)
+        }
+    }
+    
+    func addFavoriteMovie() {
+        guard let user else { return }
+        let movie = Movie(id: "1", title: "Avatar", isPopular: true)
+        Task {
+            try await UserManager.share.addFavoriteMovie(userId: user.userId, movie: movie)
+            self.user = try await UserManager.share.getUser(userId: user.userId)
+        }
+    }
+    
+    func removeFavoriteMovie() {
+        guard let user else { return }
+        Task {
+            try await UserManager.share.removeFavoriteMovie(userId: user.userId)
+            self.user = try await UserManager.share.getUser(userId: user.userId)
+        }
+    }
 }
 
 struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     @Binding var showSignInView: Bool
+    let preferenceOptions: [String] = ["Sports", "Books", "Movies"]
+    
+    private func preferenceIsSelected(text: String) -> Bool {
+        viewModel.user?.preferences?.contains(text) == true
+    }
     
     var body: some View {
         List {
@@ -40,9 +80,38 @@ struct ProfileView: View {
                 } label: {
                     Text("User is premiun: \((user.isPremium ?? false).description.capitalized)")
                 }
+                
+                VStack {
+                    HStack {
+                        ForEach(preferenceOptions, id: \.self) { string in
+                            Button(string) {
+                                if preferenceIsSelected(text: string) {
+                                    viewModel.removeUserPreferences(text: string)
+                                } else {
+                                    viewModel.addUserPreferences(text: string)
+                                }
+                            }
+                            .font(.headline)
+                            .buttonStyle(.borderedProminent)
+                            .tint(preferenceIsSelected(text: string) ? .green : .red)
+                        }
+                    }
+                    
+                    Text("User Preferences: \((user.preferences ?? []).joined(separator: ", "))")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
+                Button {
+                    if user.favoriteMovie == nil {
+                        viewModel.addFavoriteMovie()
+                    } else {
+                        viewModel.removeFavoriteMovie()
+                    }
+                } label: {
+                    Text("Favorite Movie: \((user.favoriteMovie?.title ?? ""))")
+                }
 
             }
-
         }
         .onAppear {
             Task {
@@ -66,6 +135,7 @@ struct ProfileView: View {
 
 #Preview {
     NavigationStack {
-        ProfileView(showSignInView: .constant(false))
+        //ProfileView(showSignInView: .constant(false))
+        RootView()
     }
 }
