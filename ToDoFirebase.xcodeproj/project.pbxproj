@@ -183,8 +183,8 @@
 		CBD143CF2BAE53A3000FAA55 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				CB1F99D62BB0AE44002EA853 /* Products */,
 				CBD143B32BACAA10000FAA55 /* RootView.swift */,
+				CB1F99D62BB0AE44002EA853 /* Products */,
 				CBD143D72BAE5667000FAA55 /* Profile */,
 				CBD143D02BAE5495000FAA55 /* Settings */,
 			);
