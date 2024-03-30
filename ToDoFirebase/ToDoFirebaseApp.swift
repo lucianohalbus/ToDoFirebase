@@ -8,9 +8,7 @@ struct ToDoFirebaseApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                RootView()
-            }
+            RootView()
         }
     }
 }

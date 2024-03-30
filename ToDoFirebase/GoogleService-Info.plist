@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>689904530231-skr4ldusb26veq3pmkpiqdu6ndcn3eal.apps.googleusercontent.com</string>
+	<string>689904530231-s267eihjkm23lmuoe27tffdhhb0b0fao.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.689904530231-skr4ldusb26veq3pmkpiqdu6ndcn3eal</string>
+	<string>com.googleusercontent.apps.689904530231-s267eihjkm23lmuoe27tffdhhb0b0fao</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDc7zf9WZUS-ioAsxbQ-PPFSD496W6jH6w</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>klever.ToDoFirebase</string>
+	<string>halbus.ToDoFirebase</string>
 	<key>PROJECT_ID</key>
 	<string>scoreteste-4377c</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:689904530231:ios:567aa1e9c95f4f66b420b2</string>
+	<string>1:689904530231:ios:8ba7b42dcefa6dc6b420b2</string>
 </dict>
 </plist>

@@ -1,64 +1,15 @@
 //Created by Halbus Development
 
 import SwiftUI
-
-@MainActor
-final class ProfileViewModel: ObservableObject {
-    @Published private(set) var user: DBUser? = nil
-    
-    func loadCurrentUser() async throws {
-        let authDataResult = try AuthenticationManager.shared.getAuthenticatedUser()
-        self.user = try await UserManager.share.getUser(userId: authDataResult.uid)
-    }
-    
-    func togglePremiumStatus() {
-        guard let user else { return }
-        let currentValue = user.isPremium ?? false
-        Task {
-            try await UserManager.share.updateUserPremiumStatus(userId: user.userId, isPremium: !currentValue)
-            self.user = try await UserManager.share.getUser(userId: user.userId)
-        }
-    }
-    
-    func addUserPreferences(text: String) {
-        guard let user else { return }
-        
-        Task {
-            try await UserManager.share.addUserPreference(userId: user.userId, preference: text)
-            self.user = try await UserManager.share.getUser(userId: user.userId)
-        }
-    }
-    
-    func removeUserPreferences(text: String) {
-        guard let user else { return }
-        
-        Task {
-            try await UserManager.share.removeUserPreferences(userId: user.userId, preference: text)
-            self.user = try await UserManager.share.getUser(userId: user.userId)
-        }
-    }
-    
-    func addFavoriteMovie() {
-        guard let user else { return }
-        let movie = Movie(id: "1", title: "Avatar", isPopular: true)
-        Task {
-            try await UserManager.share.addFavoriteMovie(userId: user.userId, movie: movie)
-            self.user = try await UserManager.share.getUser(userId: user.userId)
-        }
-    }
-    
-    func removeFavoriteMovie() {
-        guard let user else { return }
-        Task {
-            try await UserManager.share.removeFavoriteMovie(userId: user.userId)
-            self.user = try await UserManager.share.getUser(userId: user.userId)
-        }
-    }
-}
+import PhotosUI
 
 struct ProfileView: View {
     @StateObject private var viewModel = ProfileViewModel()
     @Binding var showSignInView: Bool
+    @State private var selectedItem: PhotosPickerItem? = nil
+    @State private var url: URL? = nil
+    
+    
     let preferenceOptions: [String] = ["Sports", "Books", "Movies"]
     
     private func preferenceIsSelected(text: String) -> Bool {
@@ -110,14 +61,39 @@ struct ProfileView: View {
                 } label: {
                     Text("Favorite Movie: \((user.favoriteMovie?.title ?? ""))")
                 }
-
+                
+                PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
+                    Text("Select Photo")
+                }
+                
+                if let urlString = viewModel.user?.profileImagePathUrl, let url = URL(string: urlString) {
+                    AsyncImage(url: url) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 150, height: 150)
+                            .cornerRadius(10)
+                    } placeholder: {
+                        ProgressView()
+                            .frame(width: 150, height: 150)
+                    }
+                }
+                
+                if viewModel.user?.profileImagePath != nil {
+                    Button("Delete image") {
+                        viewModel.deleteProfileImage()
+                    }
+                }
             }
         }
-        .onAppear {
-            Task {
-                try await viewModel.loadCurrentUser()
-            }
+        .task {
+            try? await viewModel.loadCurrentUser()
         }
+        .onChange(of: selectedItem, perform: { newValue in
+            if let newValue {
+                viewModel.saveProfileImage(item: newValue)
+            }
+        })
         .navigationTitle("Profile")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {

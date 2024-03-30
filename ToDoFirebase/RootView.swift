@@ -3,16 +3,14 @@
 import SwiftUI
 
 struct RootView: View {
+    
     @State private var showSignInView: Bool = false
     
     var body: some View {
         ZStack {
-            ProductsView()
-//            if !showSignInView {
-//                NavigationStack {
-//                    ProfileView(showSignInView: $showSignInView)
-//                }
-//            }
+            if !showSignInView {
+                TabbarView(showSignInView: $showSignInView)
+            }
         }
         .onAppear {
             let authUser = try? AuthenticationManager.shared.getAuthenticatedUser()
